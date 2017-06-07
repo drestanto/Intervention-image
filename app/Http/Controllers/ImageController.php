@@ -45,8 +45,6 @@ class ImageController extends Controller
 
         $this->postImage->add($input);
 
-        return back()
-        	->with('success','Image Upload successful')
-        	->with('imageName',$input['imagename']);
+        return "Done, resize complete";
     }
 }
