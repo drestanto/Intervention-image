@@ -17,3 +17,6 @@ Route::get('/', function () {
 
 Route::get('resizeImage', 'ImageController@resizeImage');
 Route::post('resizeImagePost',['as'=>'resizeImagePost','uses'=>'ImageController@resizeImagePost']);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
