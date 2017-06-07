@@ -25,11 +25,11 @@ class ImageController extends Controller
      */
     public function resizeImagePost(Request $request)
     {
-	    $this->validate($request, [
-	    	'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
+	    // $this->validate($request, [
+	    // 	'title' => 'required',
+     //        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+     //    ]);
+        // return "A";
         $image = $request->file('image');
         $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
      
@@ -40,6 +40,7 @@ class ImageController extends Controller
 		    $constraint->aspectRatio();
 		})->save($destinationPath.'/'.$input['imagename']);
 
+        return "A";
         $destinationPath = public_path('/images');
         $image->move($destinationPath, $input['imagename']);
 
