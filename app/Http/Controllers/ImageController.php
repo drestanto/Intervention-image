@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Image;
 use Validator;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -25,8 +26,12 @@ class ImageController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-        return "A";
-        return view('store');
+        $title = $request->title;
+        $ext = $request->file('image')->extension();
+        $path = "images/" . $request->title . "." . $ext;
+        Storage::putFileAs('public',$request->file('image'), $path);
+        
+        return view('resizeImage',compact('title','path'));
     }
 
     /**

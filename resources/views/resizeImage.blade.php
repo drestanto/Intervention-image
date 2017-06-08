@@ -4,8 +4,8 @@
 		<h3> Resizing images </h3>
 		<form action="/resizeImagePost" method="post">
 			{{ csrf_field() }}
-			Title : <input type="text" name="title" disabled> <br>
-			Path : <input type="text" name="path" disabled> <br>
+			Title : <input type="text" name="title" values="{{ $title }}" disabled> <br>
+			Path : <input type="text" name="path" values="{{ $path }}" disabled> <br>
 			Width : <input type="text" name="width">
 			@if ($errors->has('width'))
 			    <span class="help-block">

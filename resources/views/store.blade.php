@@ -2,7 +2,7 @@
 	<body>
 		<h2>Resize Picture for Thumbnail</h2>
 		<h3> Store your image first </h3>
-		<form action="/store" method="post">
+		<form action="/store" enctype="multipart/form-data" method="post">
 			{{ csrf_field() }}
 			Title : <input type="text" name="title">
 			@if ($errors->has('title'))
@@ -18,7 +18,7 @@
 			    </span>
 			@endif
 			<br>
-			<button type="submit" class="btn btn-success">Store</button>
+			<input type="submit" value="Store">
 		</form>
 	</body>
 
