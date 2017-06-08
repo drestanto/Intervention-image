@@ -94,10 +94,10 @@ class ImageController extends Controller
         $path = "images/new.jpeg";
         $img = Image::make(Storage::disk('public')->get($path));
         
-        //try to invert
-        $img->invert();
+        //try to gamma
+        $img->gamma(1.6);
 
-        $newPath = "public/try/invert.jpeg";
+        $newPath = "public/try/gamma.jpeg";
         Storage::put($newPath, (string) $img->encode());
         return "Done!";
     }
