@@ -57,4 +57,20 @@ class ImageController extends Controller
         return "Resize success";
 
     }
+
+    public function resizeImage2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'image' => 'required',
+            'width' => 'numeric|min:1',
+            'height' => 'numeric|min:1',
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+    }
+
 }

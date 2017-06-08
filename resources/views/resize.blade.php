@@ -23,15 +23,21 @@
 			Width : <input type="text" name="width">
 			@if ($errors->has('width'))
 			    <span class="help-block">
-			        <strong>This field is required</strong>
+			        <strong>Width must be positive number</strong>
 			    </span>
 			@endif
 			<br>
 			Height : <input type="text" name="height">
 			@if ($errors->has('height'))
-			    <span class="help-block">
-			        <strong>This field is required</strong>
-			    </span>
+				@if ($errors->has('width'))
+					<span class="help-block">
+					    <strong>Height too!!</strong>
+					</span>
+				@else
+				    <span class="help-block">
+				        <strong>Height must be positive number</strong>
+				    </span>
+				@endif
 			@endif
 			<br>
 			<input type="submit" value="Submit">
