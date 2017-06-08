@@ -44,8 +44,9 @@ class ImageController extends Controller
 	    //Asumsi berhasil
         $width = (int) $request->width;
         $height = (int) $request->height;
-
+        //return $request;
         if (($width <= 0) or ($height <= 0)) {
+            return $request->path;
             Storage::delete($request->path);
             return "Wrong Input for Width and Height";
         } return "YEAY";
