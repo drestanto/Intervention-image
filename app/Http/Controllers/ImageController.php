@@ -94,10 +94,10 @@ class ImageController extends Controller
         $path = "images/new.jpeg";
         $img = Image::make(Storage::disk('public')->get($path));
         
-        //try to gamma
-        $img->gamma(1.6);
+        //try to mask
+        $img->mask(Storage::disk('public')->get('images/Zoom.jpeg'));
 
-        $newPath = "public/try/gamma.jpeg";
+        $newPath = "public/try/mask.jpeg";
         Storage::put($newPath, (string) $img->encode());
         return "Done!";
     }
