@@ -79,6 +79,7 @@ class ImageController extends Controller
 
         $filename  = $request->title . '.' . $file->getClientOriginalExtension();
         $path = 'public/new/' . $filename;
+
         //fit actually, not a resize
         $img = Image::make($file->getRealPath())->fit($width, $height);
         Storage::put($path, (string) $img->encode());
@@ -93,10 +94,10 @@ class ImageController extends Controller
         $path = "images/new.jpeg";
         $img = Image::make(Storage::disk('public')->get($path));
         
-        //try to flip
-        $img->flip('h');
+        //try to greyscale
+        $img->greyscale();
 
-        $newPath = "public/try/flip2.jpeg";
+        $newPath = "public/try/greyscale.jpeg";
         Storage::put($newPath, (string) $img->encode());
         return "Done!";
     }
