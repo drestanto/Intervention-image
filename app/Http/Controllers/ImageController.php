@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Image;
 use Validator;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ImageController extends Controller
 {
@@ -71,6 +72,18 @@ class ImageController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
+
+        $file = $request->file('image');
+        $width = (int) $request->width;
+        $height = (int) $request->height;
+
+        $filename  = $request->title . '.' . $file->getClientOriginalExtension();
+        $path = 'public/new/' . $filename;
+        $img = Image::make($file->getRealPath())->fit($height, $width);
+        Storage::put($path, (string) $img->encode());
+
+
+        return "Resize success!!<br>Check it out on your folder";
     }
 
 }
