@@ -92,10 +92,10 @@ class ImageController extends Controller
         $path = "images/new.jpeg";
         $img = Image::make(Storage::disk('public')->get($path));
         
-        //try to blur
-        $img->blur(15);
+        //try to pixelate
+        $img->pixelate(12);
 
-        $newPath = "public/try/blur.jpeg";
+        $newPath = "public/try/pixelate.jpeg";
         Storage::put($newPath, (string) $img->encode());
         return "Done!";
     }
