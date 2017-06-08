@@ -25,6 +25,7 @@ Route::get('resizeImage2', function () {
 	return view('resize');
 });
 Route::post('resizeImagePost2', 'ImageController@resizeImage2');
+Route::get('try', 'ImageController@try');
 
 Auth::routes();
 

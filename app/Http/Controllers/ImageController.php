@@ -86,4 +86,18 @@ class ImageController extends Controller
         return "Resize success!!<br>Check it out on your folder";
     }
 
+    public function try()
+    {
+        //we will try many things with new.jpeg
+        $path = "images/new.jpeg";
+        $img = Image::make(Storage::disk('public')->get($path));
+        
+        //try to blur
+        $img->blur(15);
+
+        $newPath = "public/try/blur.jpeg";
+        Storage::put($newPath, (string) $img->encode());
+        return "Done!";
+    }
+
 }
