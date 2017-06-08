@@ -30,7 +30,7 @@ class ImageController extends Controller
         $ext = $request->file('image')->extension();
         $path = "images/" . $request->title . "." . $ext;
         Storage::putFileAs('public',$request->file('image'), $path);
-        
+
         return view('resizeImage',compact('title','path'));
     }
 
@@ -44,12 +44,19 @@ class ImageController extends Controller
 	    //Asumsi berhasil
         $width = (int) $request->width;
         $height = (int) $request->height;
-        //return $request;
+
         if (($width <= 0) or ($height <= 0)) {
-            return $request->path;
-            Storage::delete($request->path);
+            // blom jalan
+            File::delete($request->path);
             return "Wrong Input for Width and Height";
-        } return "YEAY";
+        }
+
+        $path = $request->path;
+        $img = Image::make(Storage::disk('public')->get($path));
+        $img->resize($width,$height);
+        $newPath = "public/thumbnail/" . substr($path,7);
+        Storage::put($newPath, (string) $img->encode());
+        return "Resize success";
 
     }
 }
