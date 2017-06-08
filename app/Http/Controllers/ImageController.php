@@ -13,9 +13,9 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function resizeImage()
+    public function store()
     {
-    	return view('resizeImage');
+    	return view('store');
     }
 
     /**
@@ -23,13 +23,13 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function resizeImagePost(Request $request)
+    public function resizeImage(Request $request)
     {
-	    // $this->validate($request, [
-	    // 	'title' => 'required',
-     //        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-     //    ]);
-        // return "A";
+	    $this->validate($request, [
+	    	'title' => 'required',
+            'image' => 'required',
+        ]);
+        return "A";
         $image = $request->file('image');
         $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
      

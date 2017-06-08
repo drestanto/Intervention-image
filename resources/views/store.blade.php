@@ -1,0 +1,26 @@
+<html>
+	<body>
+		<h2>Resize Picture for Thumbnail</h2>
+		<br>
+		<h3> Store your image first </h3>
+		<form action="/store" method="post">
+			{{ csrf_field() }}
+			Title : <input type="text" name="title">
+			@if ($errors->has('title'))
+			    <span class="help-block">
+			        <strong>This field is required</strong>
+			    </span>
+			@endif
+			<br>
+			<input type="file" name="image">
+			@if ($errors->has('image'))
+			    <span class="help-block">
+			        <strong>This field is required</strong>
+			    </span>
+			@endif
+			<br>
+			<button type="submit" class="btn btn-success">Store</button>
+		</form>
+	</body>
+
+</html>

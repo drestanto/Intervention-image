@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('resizeImage', 'ImageController@resizeImage');
-Route::post('resizeImagePost',['as'=>'resizeImagePost','uses'=>'ImageController@resizeImagePost']);
+Route::get('resizeImage', function () {
+	return view('store');
+});
+Route::post('store', 'ImageController@store');
+Route::post('resizeImagePost','ImageController@resizeImage');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
