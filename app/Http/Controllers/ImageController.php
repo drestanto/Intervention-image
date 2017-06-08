@@ -94,10 +94,10 @@ class ImageController extends Controller
         $path = "images/new.jpeg";
         $img = Image::make(Storage::disk('public')->get($path));
         
-        //try to colorize
-        $img->colorize(0, 30, 0);
+        //try to invert
+        $img->invert();
 
-        $newPath = "public/try/colorize.jpeg";
+        $newPath = "public/try/invert.jpeg";
         Storage::put($newPath, (string) $img->encode());
         return "Done!";
     }
