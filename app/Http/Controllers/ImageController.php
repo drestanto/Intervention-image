@@ -93,10 +93,10 @@ class ImageController extends Controller
         $path = "images/new.jpeg";
         $img = Image::make(Storage::disk('public')->get($path));
         
-        //try to rotate
-        $img->rotate(180);
+        //try to flip
+        $img->flip('h');
 
-        $newPath = "public/try/rotate2.jpeg";
+        $newPath = "public/try/flip2.jpeg";
         Storage::put($newPath, (string) $img->encode());
         return "Done!";
     }
