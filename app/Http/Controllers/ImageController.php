@@ -79,6 +79,7 @@ class ImageController extends Controller
 
         $filename  = $request->title . '.' . $file->getClientOriginalExtension();
         $path = 'public/new/' . $filename;
+        //fit actually, not a resize
         $img = Image::make($file->getRealPath())->fit($width, $height);
         Storage::put($path, (string) $img->encode());
 
@@ -92,10 +93,10 @@ class ImageController extends Controller
         $path = "images/new.jpeg";
         $img = Image::make(Storage::disk('public')->get($path));
         
-        //try to pixelate
-        $img->pixelate(12);
+        //try to rotate
+        $img->rotate(180);
 
-        $newPath = "public/try/pixelate.jpeg";
+        $newPath = "public/try/rotate2.jpeg";
         Storage::put($newPath, (string) $img->encode());
         return "Done!";
     }
