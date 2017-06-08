@@ -79,7 +79,7 @@ class ImageController extends Controller
 
         $filename  = $request->title . '.' . $file->getClientOriginalExtension();
         $path = 'public/new/' . $filename;
-        $img = Image::make($file->getRealPath())->fit($height, $width);
+        $img = Image::make($file->getRealPath())->fit($width, $height);
         Storage::put($path, (string) $img->encode());
 
 
