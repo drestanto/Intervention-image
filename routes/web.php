@@ -21,7 +21,7 @@ Route::get('resizeImage', function () {
 Route::post('store', 'ImageController@store');
 Route::post('resizeImagePost','ImageController@resizeImage');
 
-Route::get('resizeImage2' function () {
+Route::get('resizeImage2', function () {
 	return view('resize');
 });
 Route::post('resizeImagePost2', 'ImageController@resizeImage2');
