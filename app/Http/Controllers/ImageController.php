@@ -46,9 +46,7 @@ class ImageController extends Controller
         $height = (int) $request->height;
 
         if (($width <= 0) or ($height <= 0)) {
-            // blom jalan
-            File::delete($request->path);
-            return "Wrong Input for Width and Height";
+            return "Wrong Input for Width and Height!!!<br>Width and Height must be positive numbers";
         }
 
         $path = $request->path;
