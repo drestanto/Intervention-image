@@ -1,7 +1,6 @@
 <html>
 	<body>
 		<h2>Resize Picture for Thumbnail</h2>
-		<br>
 		<h3> Store your image first </h3>
 		<form action="/store" method="post">
 			{{ csrf_field() }}
